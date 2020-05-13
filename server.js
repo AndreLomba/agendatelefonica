@@ -49,7 +49,15 @@ server.delete('/contato/:id', async (request, response) => {
     const sql = `DELETE FROM agenda WHERE id = $1`;
     await pool.query(sql, [id]);
     return response.status(204).send();
-})
+});
+
+// BUSCA CONTATO
+server.get('/contato/:id', async function(request, response) {
+    const {id} = request.params;
+    const sql = `SELECT * FROM agenda WHERE id = $1`;
+    const result = await pool.query(sql, [id]);
+    return response.json(result.rows);
+});
 
 
 server.listen(process.env.PORT || 3000);
