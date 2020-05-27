@@ -1,9 +1,9 @@
 const express = require('express');
 const server = express();
-const cors = require('cors');
 
 // PROCURAR PELO HEROKU POSTGREES NO HEROKU E PEGAR AS CONFIGURAÇÕES DO BD
 const Pool = require('pg').Pool;
+const cors = require('cors');
 
 // CONEXÃO COM BD
 const pool = new Pool({
