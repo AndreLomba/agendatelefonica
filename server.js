@@ -7,10 +7,10 @@ const cors = require('cors');
 
 // CONEXÃO COM BD
 const pool = new Pool({
-    user: 'wpuysxguveoexk',
-    password: '63223581205e41466e48ad2e06498faddf2950d1089ab1d4e7285194f6e0b419',
-    host: 'ec2-54-86-170-8.compute-1.amazonaws.com',
-    database: 'deii1sq7jdsmtu',
+    user: 'bmultoamrhbtkq',
+    password: 'bd5bf18c704917e098dd541ac031db4a1a4a4a3605211ce60ebafeccde7552f0',
+    host: 'ec2-54-175-117-212.compute-1.amazonaws.com',
+    database: 'd19t31tggc8vvd',
     port: 5432,
     ssl: {rejectUnauthorized: false}
 });
