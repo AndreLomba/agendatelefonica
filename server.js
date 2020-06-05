@@ -1,6 +1,4 @@
 const express = require('express');
-const server = express();
-
 // PROCURAR PELO HEROKU POSTGREES NO HEROKU E PEGAR AS CONFIGURAÇÕES DO BD
 const Pool = require('pg').Pool;
 const cors = require('cors');
@@ -15,7 +13,10 @@ const pool = new Pool({
     ssl: {rejectUnauthorized: false}
 });
 
+const server = express();
+
 server.use(cors());
+
 server.use(express.json());
 // EXIBE O QUE EXISTE NA TABELA "AGENDA"
 // DEVEMOS USAR O ASYC AWAIT PARA QUE SÓ RETORNE APÓS O SELECT FOR FEITO NO BANCO
