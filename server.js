@@ -60,5 +60,18 @@ server.get('/contato/:id', async function(request, response) {
     return response.json(result.rows);
 });
 
+server.patch('/contato/:id/favoritar', async function(request, response) {
+    const id = request.params.id;
+    const sql = `UPDATE agenda SET favorito = "S" WHERE id = $1`;
+    await pool.query(sql, [id]);
+    return response.status(204).send();
+})
+
+server.patch('/contato/:id/desfavoritar', async function(request, response) {
+    const id = request.params.id;
+    const sql = `UPDATE agenda SET favorito = "N" WHERE id = $1`;
+    await pool.query(sql, [id]);
+    return response.status(204).send();
+})
 
 server.listen(process.env.PORT || 3000);
