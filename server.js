@@ -61,17 +61,11 @@ server.get('/contato/:id', async function(request, response) {
     return response.json(result.rows);
 });
 
-server.patch('/contato/:id/favoritar', async function(request, response) {
-    const id = request.params.id;
-    const sql = `UPDATE agenda SET favorito = "S" WHERE id = $1`;
-    await pool.query(sql, [id]);
-    return response.status(204).send();
-});
-
-server.patch('/contato/:id/desfavoritar', async function(request, response) {
-    const id = request.params.id;
-    const sql = `UPDATE agenda SET favorito = "N" WHERE id = $1`;
-    await pool.query(sql, [id]);
+server.put('/contato/favorito/:id', async (request, response) => {
+    const {id} = request.params;
+    const {favorito} = request.body;
+    const sql = `UPDATE agenda SET favorito = $1 WHERE id = $2`;
+    await pool.query(sql, [favorito,id]);
     return response.status(204).send();
 })
 
